@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.qa.base.TestBase;
 
 public class Loginpage extends TestBase{
+	
 
 	@FindBy(linkText = "Zoho.com")
 
@@ -34,25 +35,28 @@ public class Loginpage extends TestBase{
 	
 	@FindBy(id ="nextbtn")
 	WebElement loginbutton;
-
+	
 	public Loginpage() {
-
+		
 		PageFactory.initElements(driver, this);
 
 	}
+	
+		
 
+	
 	public  String validateloginpagetitle() {
 		
 		return driver.getTitle();
+	
 	}
-
 	public boolean validatelogo() {
 		return logo.isDisplayed();
 
 	}
 	
 	
-	public void login(String us, String pwd) {
+	public  Homepage login(String us, String pwd) {
 	
 		signinbutton.click();
 		
@@ -60,12 +64,13 @@ public class Loginpage extends TestBase{
 		
 		 nextbutton.click();
 		password.sendKeys(pwd);
-		loginbutton.click();
+		 loginbutton.click();
+		return new Homepage(); 
 		
 	}
 	
 	
 	
 	
-	
 }
+

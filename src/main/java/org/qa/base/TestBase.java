@@ -3,6 +3,7 @@ package org.qa.base;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,7 +23,7 @@ public class TestBase {
 
 	public TestBase() throws IOException {
 
-		fr = new FileReader(System.getProperty("user.dir") + "\\src\\test\\resources\\configfiles\\config.properties");
+		fr = new FileReader(System.getProperty("user.dir") + "\\src\\main\\java\\org\\qa\\config\\config.properties");
 		prop= new Properties();
 
 		prop.load(fr);
@@ -31,7 +32,7 @@ public class TestBase {
 
 	public static void initialization() {
 		
-		if(prop.getProperty("browser")=="chrome") {
+		if(prop.getProperty("browser").equalsIgnoreCase("chrome")) {
 			
 			WebDriverManager.chromedriver().setup();
 			driver=new ChromeDriver();
@@ -40,14 +41,15 @@ public class TestBase {
 			
 		}
 
-		else if (prop.getProperty("browser")=="firefox") {
+	else if (prop .getProperty("browser").equalsIgnoreCase("firefox")) {
+		
+		WebDriverManager.edgedriver().setup();
+		driver=new EdgeDriver();
+		driver.get(prop.getProperty("url"));
+		
 			
-			WebDriverManager.firefoxdriver().setup();
-			driver=new FirefoxDriver ();
-			driver.get(prop.getProperty("url"));
-			;
 		}
-	else if (prop.getProperty("browser")=="edge") {
+	else if (prop.getProperty("browser").equalsIgnoreCase("edge")) {
 			
 			WebDriverManager.edgedriver().setup();
 			driver=new EdgeDriver();
@@ -58,8 +60,8 @@ public class TestBase {
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		
-		driver.manage().timeouts().pageLoadTimeout(3, Timeu));
-		
+		driver.manage().timeouts().pageLoadTimeout(3, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		}
 
 		
@@ -72,4 +74,3 @@ public class TestBase {
 			
 	
 	
-}
