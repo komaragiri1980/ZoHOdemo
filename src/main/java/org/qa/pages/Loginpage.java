@@ -1,6 +1,8 @@
 package org.qa.pages;
 
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -8,6 +10,12 @@ import org.qa.base.TestBase;
 
 public class Loginpage extends TestBase{
 	
+
+	public Loginpage() throws IOException {
+		
+		PageFactory.initElements(driver, this);
+	}
+
 
 	@FindBy(linkText = "Zoho.com")
 
@@ -36,15 +44,8 @@ public class Loginpage extends TestBase{
 	@FindBy(id ="nextbtn")
 	WebElement loginbutton;
 	
-	public Loginpage() {
-		
-		PageFactory.initElements(driver, this);
 
-	}
-	
-		
-
-	
+			
 	public  String validateloginpagetitle() {
 		
 		return driver.getTitle();
@@ -56,7 +57,7 @@ public class Loginpage extends TestBase{
 	}
 	
 	
-	public  Homepage login(String us, String pwd) {
+	public  Homepage login(String us, String pwd) throws IOException {
 	
 		signinbutton.click();
 		

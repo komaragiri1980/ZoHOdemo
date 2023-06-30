@@ -21,7 +21,7 @@ public class Logintest extends TestBase {
 	}
 	
 	@BeforeMethod
-	public void setup(){
+	public void setup() throws IOException{
 		
 		initialization();
 		loginpage= new Loginpage();
@@ -47,7 +47,7 @@ Assert.assertTrue(logo);
 }
 
 	@Test(priority=3)
-public void loginverifcation() {
+public void loginverifcation() throws IOException {
 	
 homepage =loginpage.login(prop.getProperty("username"), prop.getProperty("password"));
 }

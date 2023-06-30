@@ -2,6 +2,8 @@ package org.qa.pages;
 
 
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -13,6 +15,10 @@ public class Homepage extends  TestBase {
 	
 	
 	
+	public Homepage() throws IOException {
+		PageFactory.initElements(driver, this);
+		// TODO Auto-generated constructor stub
+	}
 	@FindBy(xpath = "//li[@class='zh-productdropdown']//span[@class='pd-dp']")
 
 	WebElement productslink;
@@ -29,12 +35,7 @@ public class Homepage extends  TestBase {
 
 	WebElement Companylink;
 	 
-	public Homepage() {
-
-		PageFactory.initElements(driver, this);
-
-	}
-
+	
 	public String verifytitle() {
 
 		return productslink.getText();
