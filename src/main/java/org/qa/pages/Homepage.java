@@ -34,11 +34,11 @@ public class Homepage extends  TestBase {
 	@FindBy(xpath = "//li[@class='nav-menu']//span[@class='pd-dp']")
 
 	WebElement Companylink;
-	 
-	
+	 		
 	public String verifytitle() {
 
-		return productslink.getText();
+		
+		return driver.getTitle();
 
 	}
 

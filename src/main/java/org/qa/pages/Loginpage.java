@@ -2,6 +2,7 @@ package org.qa.pages;
 
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -59,12 +60,14 @@ public class Loginpage extends TestBase{
 	
 	public  Homepage login(String us, String pwd) throws IOException {
 	
+		driver.manage().timeouts().implicitlyWait(1,TimeUnit.MINUTES);
 		signinbutton.click();
 		
 		username.sendKeys(us);
-		
+		driver.manage().timeouts().implicitlyWait(1,TimeUnit.MINUTES);
 		 nextbutton.click();
 		password.sendKeys(pwd);
+		driver.manage().timeouts().implicitlyWait(1,TimeUnit.MINUTES);
 		 loginbutton.click();
 		return new Homepage(); 
 		

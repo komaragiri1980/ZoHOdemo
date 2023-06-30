@@ -20,7 +20,7 @@ public class Homepagetest extends TestBase {
 	}
 
 	@BeforeMethod
-	public void setup() {
+	public void setup() throws IOException {
 
 		initialization();
 		loginpage = new Loginpage();
@@ -39,7 +39,7 @@ public class Homepagetest extends TestBase {
 	{
 	 
 	String actualtitle= homepage.verifytitle();
-	Assert.assertEquals(actualtitle, "Explore All Products | Zoho", "Title not matched");
+	Assert.assertEquals(actualtitle.trim(), "Explore All Products | Zoho", "Title not matched");
 			
 	}
 	
